@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1080658066865",
+    "project_id": "dcdmain-1d479",
+    "storage_bucket": "dcdmain-1d479.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080658066865:android:9a27bbcce861be72ba1190",
+        "android_client_info": {
+          "package_name": "com.mulatya.dcdmain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080658066865-pa3kbj60ilpsk5rfav73vqtbhesufph3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpVzieuFhcAG3UMJguxGnjl3-TASkkloI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080658066865-pa3kbj60ilpsk5rfav73vqtbhesufph3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
