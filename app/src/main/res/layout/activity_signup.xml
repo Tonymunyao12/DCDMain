@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable name="viewmodel"
+            type="com.mulatya.dcdmain.ui.auth.AuthViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background1"
+        android:orientation="vertical"
+        tools:context=".ui.auth.SignupActivity"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signupLayout"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/signup_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_horizontal"
+                android:text="@string/signup_title"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/signup_title"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="70dp"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+              <LinearLayout
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:paddingTop="30dp">
+
+                  <TextView
+                      android:labelFor="@+id/text_email"
+                      android:text="@string/text_email"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:fontFamily="sans-serif-light"
+                      android:textSize="24sp" />
+
+                  <EditText
+                      android:id="@+id/text_email"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="10dp"
+                      android:autofillHints="emailAddress"
+                      android:drawableStart="@drawable/email_vector2"
+                      android:drawablePadding="10dp"
+                      android:hint="@string/edit_text_hint"
+                      android:inputType="textEmailAddress"
+                      android:singleLine="true"
+                      android:text="@={viewmodel.email}" />
+
+                  <TextView
+                      android:labelFor="@id/edit_text_password"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/text_password"
+                      android:fontFamily="sans-serif-light"
+                      android:textSize="24sp"
+                      />
+                  
+                  <EditText
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:drawableStart="@drawable/password_lock_vector"
+                      android:drawablePadding="10dp"
+                      android:hint="@string/password_hint"
+                      android:inputType="textEmailAddress"
+                      android:singleLine="true"
+                      android:text="@={viewmodel.email}" />
+
+                  <Button
+                      android:id="@+id/signup_button"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_margin="22dp"
+                      android:onClick="@{() -> viewmodel.signup()}"
+                      android:text="@string/signup_button"
+                      android:textAllCaps="false"
+                      android:textSize="18sp" />
+
+                  <TextView
+                      android:id="@+id/text_view_login"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center_horizontal"
+                      android:text="@string/navigate_login"
+                      android:textAlignment="center"
+                      android:onClick="@{(v) -> viewmodel.goToLogin(v)}"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+              </LinearLayout>
+
+            </RelativeLayout>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/signup_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:elevation="4dp"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</layout>
