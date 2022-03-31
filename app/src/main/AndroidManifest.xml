@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DCDMain">
         <activity
-            android:name=".ui.home_main.Home_mainActivity"
+            android:name=".ui.home_main.HomeActivityMain"
             android:exported="false"
             android:label="@string/title_activity_home_main"
             android:theme="@style/Theme.DCDMain.NoActionBar" />
+        <activity
+            android:name=".ui.auth.SignupActivity">
+        </activity>
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true">
