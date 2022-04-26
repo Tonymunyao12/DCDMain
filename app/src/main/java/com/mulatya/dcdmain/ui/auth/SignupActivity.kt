@@ -1,52 +1,57 @@
+/*
+* Copyright 2020 BlessedCoders
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+* */
+
 package com.mulatya.dcdmain.ui.auth
+
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import com.mulatya.dcdmain.MainActivity
 import com.mulatya.dcdmain.R
-import com.mulatya.dcdmain.databinding.ActivitySignupBinding
 import com.mulatya.dcdmain.ui.home_main.HomeActivityMain
-import com.mulatya.dcdmain.utils.startHomeActivityMain
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
 
-class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
 
-    override val kodein by kodein()
-    private val factory: AuthViewModelFactory by instance()
+class SignupActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: AuthViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_signup)
 
-        val binding: ActivitySignupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
-        viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
-        binding.viewmodel = viewModel
-
-        viewModel.authListener = this
-    }
-
-    override fun onStarted() {
-
-        Intent(this, HomeActivityMain::class.java).also {
-            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(it)
+//
+        val navHomeMain: Button = findViewById(R.id.signup_button)
+        navHomeMain.setOnClickListener {
+            val intent = Intent(this, HomeActivityMain::class.java)
+            startActivity(intent)
         }
+
+// TODO ("making part of a string clickable")
+        val navLogin: TextView = findViewById(R.id.navigate_login)
+        navLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
     }
 
-    override fun onSuccess() {
-     startHomeActivityMain()
 
-    }
-
-    override fun onFailure(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-
-    }
 }
